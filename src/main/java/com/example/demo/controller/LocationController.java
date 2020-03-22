@@ -10,7 +10,7 @@ import com.example.demo.model.LocationStats;
 import com.example.demo.service.CoronaVirusDataService;
 
 @RestController
-public class LocationsController {
+public class LocationController {
 
 	@Autowired
 	CoronaVirusDataService coronaVirusDataService;

@@ -1,40 +1,48 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="demo">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="webjars/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
-<body ng-controller="HomeController">
+<body ng-controller="LocationController">
 	<div class="container">
 		<h1>Coronavirus Tracker Application</h1>
-		<p>This application lists the current numer of cases reported across the globe</p>
-		<p class="lead">Total cases reported as of today</p>
-		<hr class="my-4">
-		<p>
-			<span>New cases reported since previus day:</span>
-			<span>{{totalNewCases}} 10</span>
-		</p>
+		<p>This application lists the current number of cases reported across the globe</p>
+
+		<div class="jumbotron">
+			<h1 class="display-4" ng-show="totalReportedCases='totalReportedCases'"></h1>
+			<p class="lead">Total cases reported as of today</p>
+			<hr class="my-4">
+			<p>
+				<span>New cases reported since previus day:</span>
+				<a ng-show="totalNewCases='totalNewCases'"></a>
+			</p>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>State</th>
+					<th>Country</th>
+					<th>Total cases reported</th>
+					<th>Changes since last day</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="location in locations">
+					<td>{{location.state}}</td>
+					<td>{{location.country}}</td>
+					<td>{{location.latestTotalCases}}</td>
+					<td>{{location.diffFromPrevDay}}</td>
+				</tr>
+			</tbody>		
+		</table>
 	</div>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>State</th>
-				<th>Country</th>
-				<th>Total cases reported</th>
-				<th>Changes since last day</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="location in locations">
-				<td>{{location.state}}</td>
-				<td>{{location.country}}</td>
-				<td>{{location.latestTotalCases}}</td>
-				<td>{{location.diffFromPrevDay}}</td>
-			</tr>
-		</tbody>		
-	</table>
 	<script type="text/javascript" src="webjars/angularjs/1.7.8/angular.min.js"></script>
+	<script type="text/javascript" src="webjars/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/location-service.js"></script>
+	<script type="text/javascript" src="js/location-controller.js"></script>
 </body>
 </html>
