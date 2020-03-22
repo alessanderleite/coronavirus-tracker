@@ -1,9 +1,8 @@
 'use strict'
 
-angular.module('app', [
-	'ui-bootstrap',
+var demoApp = angular.module('demo', [
+	'ui.bootstrap', 
 	'demo.controllers',
-	'demo.services'
+    'demo.services'
 ]);
-
 		
